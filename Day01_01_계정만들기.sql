@@ -19,7 +19,6 @@
     2. 모든 쿼리 실행 : F5 (새로 고침 아님 주의!)
 */
 
--- 띄어쓰기든 줄바꿈이든 한줄로 인식
 DROP USER GDJ61 CASCADE;
 CREATE USER GDJ61 IDENTIFIED BY 1111;
 GRANT DBA TO GDJ61;
