@@ -69,9 +69,9 @@ ALTER TABLE BOARD_TBL
 
 -- 11. 작성자 칼럼에 MEMBER_TBL 테이블의 회원아이디를 참조하는 FK_BOARD_MEMBER 외래키를 설정하시오.
 -- 게시글을 작성한 회원 정보가 삭제되면 해당 회원이 작성한 게시글도 모두 함께 지워지도록 처리하시오.
-ALTER TABLE BOARD_TBL                                                                               ------------////////////???????????????
-    ADD CONSTRAINT FK_BOARD_MEMBER FOREIGN KEY(ID) REFERENCES MEMBER_TBL(ID) ON DELETE CASCADE;
+ALTER TABLE BOARD_TBL 
+    ADD CONSTRAINT FK_BOARD_MEMBER FOREIGN KEY(WRITER) REFERENCES MEMBER_TBL(ID) ON DELETE CASCADE;
 
 -- 12. MEMBER_TBL 테이블과 BOARD_TBL 테이블을 모두 삭제하시오.
-DROP TABLE MEMBER_TBL;
 DROP TABLE BOARD_TBL;
+DROP TABLE MEMBER_TBL;
