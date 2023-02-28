@@ -1,7 +1,7 @@
 -- 수학 함수
 
 -- 1. 제곱
---    POWER(A, B) : A의 BWPRHQ
+--    POWER(A, B) : A의 B제곱
 SELECT POWER(2,3) 
   FROM DUAL;
 

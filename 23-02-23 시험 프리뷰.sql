@@ -1,0 +1,51 @@
+-- 사원번호를 전달하면 해당 사원의 이름을 반환하는 함수 만들기
+
+CREATE OR REPLACE FUNCTION GET_NAME(EMPNO EMPLOYEE_TBL.EMP_NO%TYPE)
+RETURN VARCHAR2                 -- RETURN 타입 적을 때는 사이즈 안적는다
+IS
+    EMPNAME EMPLOYEE_TBL.NAME%TYPE;         --매개변수 테이블이름.칼럼%타입
+BEGIN
+    SELECT NAME
+      INTO EMPNAME
+      FROM EMPLOYEE_TBL
+     WHERE EMP_NO = EMPNO;
+    RETURN EMPNAME;
+END;
+
+-- 사원명
+-- 구창민
+
+-- 사원번호 1001번만 조회
+SELECT GET_NAME(1001) AS 사원명
+  FROM EMPLOYEE_TBL
+ WHERE EMP_NO = 1001;
+
+-- 한번만 조회
+SELECT DISTINCT GET_NAME(1001) AS 사원명
+  FROM EMPLOYEE_TBL
+ WHERE EMP_NO = 1001;
+ 
+-- 모든 사원 조회
+SELECT GET_NAME(EMP_NO) AS 사원명
+  FROM EMPLOYEE_TBL; 
+  
+-- 삽입/삭제/수정하면 메시지를 출력하는 트리거 만들기
+
+SET SERVEROUTPUT ON;
+--엔터
+CREATE OR REPLACE TRIGGER MY_TRIGGER
+    AFTER
+    INSERT OR DELETE OR UPDATE
+    ON DEPARTMENT_TBL
+    FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('재시험봐야지');
+END;
+--엔터
+INSERT INTO DEPARTMENT_TBL(DEPT_NO, DEPT_NAME, LOCATION) VALUES(5, '개발부', '서울');
+--엔터
+
+
+  
+
+  
